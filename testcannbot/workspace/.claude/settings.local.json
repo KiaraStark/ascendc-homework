@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python softmax_test.py)",
+      "Bash(python3 -c \"import torch; print\\('PyTorch:', torch.__version__\\); print\\('CANN:', torch.__version__\\)\")",
+      "Bash(python3 -c \"import torch\")",
+      "Bash(python3:*)",
+      "Bash(/usr/local/Ascend/cann-9.0.0-beta.2/asc --help)",
+      "Bash(export ASCENDC_INCLUDE_PATH=/usr/local/Ascend/cann-9.0.0-beta.2/aarch64-linux/include/ascendc)",
+      "Bash(export HCC_HOME=/usr/local/Ascend/cann-9.0.0-beta.2/tools/hcc)",
+      "Bash(/usr/local/Ascend/cann-9.0.0-beta.2/tools/hcc/bin/aarch64-target-linux-gnu-g++ -c -o softmax_kernel.o softmax_kernel.cpp -I/usr/local/Ascend/cann-9.0.0-beta.2/aarch64-linux/include/ascendc -DASCENDC_CPU_DEBUG=1 -std=c++17)",
+      "Bash(find:*)",
+      "Bash(export ASCENDC_INCLUDE_PATH=/usr/local/Ascend/cann-9.0.0-beta.2/aarch64-linux/include)",
+      "Bash(/usr/local/Ascend/cann-9.0.0-beta.2/tools/hcc/bin/aarch64-target-linux-gnu-g++ -c -o softmax_kernel.o softmax_kernel.cpp -I/usr/local/Ascend/cann-9.0.0-beta.2/aarch64-linux/include -DASCENDC_CPU_DEBUG=1 -std=c++17)",
+      "Bash(/usr/local/Ascend/cann-9.0.0-beta.2/tools/hcc/bin/aarch64-target-linux-gnu-g++ -c -o softmax_kernel.o softmax_kernel.cpp -I/usr/local/Ascend/cann-9.0.0-beta.2/aarch64-linux/include/ascendc/basic_api -I/usr/local/Ascend/cann-9.0.0-beta.2/aarch64-linux/include/ascendc -I/usr/local/Ascend/cann-9.0.0-beta.2/aarch64-linux/include -DASCENDC_CPU_DEBUG=1 -std=c++17)"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kernel": {
+    "type": "AscendC",
+    "name": "SoftmaxKernel",
+    "version": "1.0",
+    "description": "Softmax operator for AscendC with dim=-1 support"
+  },
+  "support_dtype": [
+    "float16",
+    "float32"
+  ],
+  "compute_dimension": -1,
+  "memory": {
+    "buffer_size": 65536,
+    "tile_size": 256
+  },
+  "compute": {
+    "block_size": 256,
+    "tile_size": 32,
+    "numerical_stable": true,
+    "method": "exp_minus_max"
+  },
+  "io": {
+    "input_desc": [
+      {
+        "name": "x",
+        "dtype": "float16|fleet32",
+        "format": "ND",
+        "shape": ["*"]
+      }
+    ],
+    "output_desc": [
+      {
+        "name": "output",
+        "dtype": "float16|fleet32",
+        "format": "ND",
+        "shape": ["*"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "SoftmaxCustom": {
+    "dynamicRankSupport": true,
+    "simplifiedKeyMode": 0,
+    "optionalInputMode": "gen_placeholder",
+    "optionalOutputMode": "gen_placeholder",
+    "params": {
+      "inputs": [
+        {
+          "name": "x",
+          "index": 0,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "max",
+          "index": 0,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        },
+        {
+          "name": "sum",
+          "index": 1,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        },
+        {
+          "name": "z",
+          "index": 2,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        }
+      ]
+    },
+    "binaryList": [
+      {
+        "coreType": 2,
+        "simplifiedKey": [
+          "SoftmaxCustom/d=0,p=1/0,2/0,2/0,2/0,2",
+          "SoftmaxCustom/d=0,p=0/0,2/0,2/0,2/0,2",
+          "SoftmaxCustom/d=1,p=1/0,2/0,2/0,2/0,2",
+          "SoftmaxCustom/d=1,p=0/0,2/0,2/0,2/0,2"
+        ],
+        "binPath": "ascend310b/softmax_custom/SoftmaxCustom_8b37acb6bcc36e0a8b8f5f1a6b896d3d.o",
+        "jsonPath": "ascend310b/softmax_custom/SoftmaxCustom_8b37acb6bcc36e0a8b8f5f1a6b896d3d.json"
+      }
+    ]
+  }
+}

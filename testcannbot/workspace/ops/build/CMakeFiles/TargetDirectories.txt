@@ -1,8 +1,0 @@
-/home/HwHiAiUser/homework/testcannbot/workspace/ops/build/CMakeFiles/softmax_kernel_lib.dir
-/home/HwHiAiUser/homework/testcannbot/workspace/ops/build/CMakeFiles/softmax_kernel_simple_lib.dir
-/home/HwHiAiUser/homework/testcannbot/workspace/ops/build/CMakeFiles/edit_cache.dir
-/home/HwHiAiUser/homework/testcannbot/workspace/ops/build/CMakeFiles/rebuild_cache.dir
-/home/HwHiAiUser/homework/testcannbot/workspace/ops/build/CMakeFiles/list_install_components.dir
-/home/HwHiAiUser/homework/testcannbot/workspace/ops/build/CMakeFiles/install.dir
-/home/HwHiAiUser/homework/testcannbot/workspace/ops/build/CMakeFiles/install/local.dir
-/home/HwHiAiUser/homework/testcannbot/workspace/ops/build/CMakeFiles/install/strip.dir

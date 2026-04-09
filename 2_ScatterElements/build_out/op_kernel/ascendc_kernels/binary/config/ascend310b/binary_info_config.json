@@ -1,0 +1,92 @@
+{
+  "ScatterElements": {
+    "dynamicRankSupport": true,
+    "simplifiedKeyMode": 0,
+    "optionalInputMode": "gen_placeholder",
+    "optionalOutputMode": "gen_placeholder",
+    "params": {
+      "inputs": [
+        {
+          "name": "var",
+          "index": 0,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        },
+        {
+          "name": "indices",
+          "index": 1,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        },
+        {
+          "name": "updates",
+          "index": 2,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "var",
+          "index": 0,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        }
+      ],
+      "attrs": [
+        {
+          "name": "axis"
+        },
+        {
+          "name": "reduce"
+        }
+      ]
+    },
+    "binaryList": [
+      {
+        "coreType": 2,
+        "simplifiedKey": [
+          "ScatterElements/d=0,p=1/3,2/3,2/3,2/3,2",
+          "ScatterElements/d=0,p=0/3,2/3,2/3,2/3,2",
+          "ScatterElements/d=1,p=1/3,2/3,2/3,2/3,2",
+          "ScatterElements/d=1,p=0/3,2/3,2/3,2/3,2"
+        ],
+        "binPath": "ascend310b/scatter_elements/ScatterElements_168b75cd9881d8f7f9d78cf13b3772c8.o",
+        "jsonPath": "ascend310b/scatter_elements/ScatterElements_168b75cd9881d8f7f9d78cf13b3772c8.json"
+      },
+      {
+        "coreType": 2,
+        "simplifiedKey": [
+          "ScatterElements/d=0,p=1/4,2/3,2/4,2/4,2",
+          "ScatterElements/d=0,p=0/4,2/3,2/4,2/4,2",
+          "ScatterElements/d=1,p=1/4,2/3,2/4,2/4,2",
+          "ScatterElements/d=1,p=0/4,2/3,2/4,2/4,2"
+        ],
+        "binPath": "ascend310b/scatter_elements/ScatterElements_1ee47f32e490e39971a213f823178abf.o",
+        "jsonPath": "ascend310b/scatter_elements/ScatterElements_1ee47f32e490e39971a213f823178abf.json"
+      },
+      {
+        "coreType": 2,
+        "simplifiedKey": [
+          "ScatterElements/d=0,p=1/0,2/3,2/0,2/0,2",
+          "ScatterElements/d=0,p=0/0,2/3,2/0,2/0,2",
+          "ScatterElements/d=1,p=1/0,2/3,2/0,2/0,2",
+          "ScatterElements/d=1,p=0/0,2/3,2/0,2/0,2"
+        ],
+        "binPath": "ascend310b/scatter_elements/ScatterElements_b4ba15436ee77d79228c4fc3e32ecf84.o",
+        "jsonPath": "ascend310b/scatter_elements/ScatterElements_b4ba15436ee77d79228c4fc3e32ecf84.json"
+      },
+      {
+        "coreType": 2,
+        "simplifiedKey": [
+          "ScatterElements/d=0,p=1/1,2/3,2/1,2/1,2",
+          "ScatterElements/d=0,p=0/1,2/3,2/1,2/1,2",
+          "ScatterElements/d=1,p=1/1,2/3,2/1,2/1,2",
+          "ScatterElements/d=1,p=0/1,2/3,2/1,2/1,2"
+        ],
+        "binPath": "ascend310b/scatter_elements/ScatterElements_fa4162924e509aaa31890ba67e9eede8.o",
+        "jsonPath": "ascend310b/scatter_elements/ScatterElements_fa4162924e509aaa31890ba67e9eede8.json"
+      }
+    ]
+  }
+}

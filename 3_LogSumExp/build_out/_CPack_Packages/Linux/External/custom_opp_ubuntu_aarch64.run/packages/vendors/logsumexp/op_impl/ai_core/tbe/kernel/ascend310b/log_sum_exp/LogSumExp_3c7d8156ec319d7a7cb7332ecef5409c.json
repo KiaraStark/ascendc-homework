@@ -1,0 +1,93 @@
+{
+ "binFileName": "LogSumExp_3c7d8156ec319d7a7cb7332ecef5409c",
+ "binFileSuffix": ".o",
+ "blockDim": -1,
+ "coreType": "VectorCore",
+ "core_type": "AIV",
+ "kernelName": "LogSumExp_3c7d8156ec319d7a7cb7332ecef5409c",
+ "magic": "RT_DEV_BINARY_MAGIC_ELF",
+ "memoryStamping": [],
+ "opParaSize": 128,
+ "parameters": [
+  null,
+  null,
+  null
+ ],
+ "sha256": "f7fced8b8a7fee5e6bd57d5d87e490bd1150dff6837823f10cc44f1819d52da1",
+ "workspace": {
+  "num": 1,
+  "size": [
+   -1
+  ],
+  "type": [
+   0
+  ]
+ },
+ "kernelList": [
+  {
+   "kernelName": "LogSumExp_3c7d8156ec319d7a7cb7332ecef5409c_1"
+  },
+  {
+   "kernelName": "LogSumExp_3c7d8156ec319d7a7cb7332ecef5409c_2"
+  }
+ ],
+ "optionalInputMode": "gen_placeholder",
+ "optionalOutputMode": "gen_placeholder",
+ "supportSuperKernel": 1,
+ "compileInfo": {},
+ "supportInfo": {
+  "implMode": "high_performance",
+  "int64Mode": false,
+  "simplifiedKeyMode": 0,
+  "simplifiedKey": [
+   "LogSumExp/d=0,p=1/0,2/0,2",
+   "LogSumExp/d=0,p=0/0,2/0,2",
+   "LogSumExp/d=1,p=1/0,2/0,2",
+   "LogSumExp/d=1,p=0/0,2/0,2"
+  ],
+  "optionalInputMode": "gen_placeholder",
+  "optionalOutputMode": "gen_placeholder",
+  "staticKey": "b23e46761d81d6cda3df658c22bf93d6a137f547f39595bb9dd4405de9240f65,62fb238c18c3ba79eae1729ad0a3b9fcffd367c0831ea9d26bd4101bc82c7734",
+  "inputs": [
+   {
+    "name": "x",
+    "index": 0,
+    "dtype": "float32",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "y",
+    "index": 0,
+    "dtype": "float32",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   }
+  ],
+  "attrs": [
+   {
+    "name": "dim",
+    "dtype": "list_int",
+    "value": []
+   },
+   {
+    "name": "keep_dim",
+    "dtype": "bool",
+    "value": false
+   }
+  ],
+  "opMode": "dynamic",
+  "deterministic": "ignore"
+ },
+ "filePath": "ascend310b/log_sum_exp/LogSumExp_3c7d8156ec319d7a7cb7332ecef5409c.json"
+}

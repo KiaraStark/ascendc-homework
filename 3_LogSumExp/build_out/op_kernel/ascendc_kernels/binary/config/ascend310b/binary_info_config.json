@@ -1,0 +1,58 @@
+{
+  "LogSumExp": {
+    "dynamicRankSupport": true,
+    "simplifiedKeyMode": 0,
+    "optionalInputMode": "gen_placeholder",
+    "optionalOutputMode": "gen_placeholder",
+    "params": {
+      "inputs": [
+        {
+          "name": "x",
+          "index": 0,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "y",
+          "index": 0,
+          "paramType": "required",
+          "formatMode": "static_nd_agnostic"
+        }
+      ],
+      "attrs": [
+        {
+          "name": "dim"
+        },
+        {
+          "name": "keep_dim"
+        }
+      ]
+    },
+    "binaryList": [
+      {
+        "coreType": 2,
+        "simplifiedKey": [
+          "LogSumExp/d=0,p=1/0,2/0,2",
+          "LogSumExp/d=0,p=0/0,2/0,2",
+          "LogSumExp/d=1,p=1/0,2/0,2",
+          "LogSumExp/d=1,p=0/0,2/0,2"
+        ],
+        "binPath": "ascend310b/log_sum_exp/LogSumExp_3c7d8156ec319d7a7cb7332ecef5409c.o",
+        "jsonPath": "ascend310b/log_sum_exp/LogSumExp_3c7d8156ec319d7a7cb7332ecef5409c.json"
+      },
+      {
+        "coreType": 2,
+        "simplifiedKey": [
+          "LogSumExp/d=0,p=1/1,2/1,2",
+          "LogSumExp/d=0,p=0/1,2/1,2",
+          "LogSumExp/d=1,p=1/1,2/1,2",
+          "LogSumExp/d=1,p=0/1,2/1,2"
+        ],
+        "binPath": "ascend310b/log_sum_exp/LogSumExp_fc576e6dab1c3c738705c08412cd8412.o",
+        "jsonPath": "ascend310b/log_sum_exp/LogSumExp_fc576e6dab1c3c738705c08412cd8412.json"
+      }
+    ]
+  }
+}

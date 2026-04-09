@@ -22,14 +22,14 @@ struct VecTiling {
     uint32_t tailCoreSingleCoreLoopTail = 0;
     SoftMaxTiling softmaxTilingData;
 };
-
+template <typename T>
 class KernelSoftmax {
 public:
     __aicore__ inline KernelSoftmax() {}
     __aicore__ inline void InitTiling(const VecTiling& tilingData)
     {
         rowLength = tilingData.rowLength;
-        sharedTmpBufferSize = tilingData.sharedTmpBufferSize;
+        sharedTmpBufferSize = tilingData.sharedTmpBufferSize;//缓存大小
         columnLength = tilingData.columnLength;
         usedBlockDim = tilingData.usedBlockDim;
         coreRowNum = tilingData.coreRowNum;
@@ -46,7 +46,7 @@ public:
         ASSERT(AscendC::GetBlockNum() != 0 && "block dim can not be zero!");
         InitTiling(tilingData);
 
-        if (AscendC::GetBlockIdx() == this->usedBlockDim) { // tail core
+        if (AscendC::GetBlockIdx() == this->usedBlockDim) { // tail core 
             this->singleLoopCoreRowNum = this->tailCoreSingleLoopCoreRowNum;
             this->singleCoreLoopCount = this->tailCoreSingleCoreLoopCount;
             this->leftRow = this->tailCoreSingleCoreLoopTail;
@@ -58,19 +58,19 @@ public:
         uint32_t offset1 = this->blockLength * AscendC::GetBlockIdx();
         uint32_t offset2 = this->msLength * AscendC::GetBlockIdx();
 
-        xGm.SetGlobalBuffer((__gm__ float*)x + offset1, this->blockLength);
-        zGm.SetGlobalBuffer((__gm__ float*)z + offset1, this->blockLength);
+        xGm.SetGlobalBuffer((__gm__ T*)x + offset1, this->blockLength);
+        zGm.SetGlobalBuffer((__gm__ T*)z + offset1, this->blockLength);
 
-        maxGm.SetGlobalBuffer((__gm__ float*)max + offset2, this->msLength);
-        sumGm.SetGlobalBuffer((__gm__ float*)sum + offset2, this->msLength);
+        maxGm.SetGlobalBuffer((__gm__ T*)max + offset2, this->msLength);
+        sumGm.SetGlobalBuffer((__gm__ T*)sum + offset2, this->msLength);
 
 
         this->tileLength = this->singleLoopCoreRowNum * this->columnLength;
-        pipe.InitBuffer(queueX, BUFFER_NUM, this->tileLength * sizeof(float));
+        pipe.InitBuffer(queueX, BUFFER_NUM, this->tileLength * sizeof(T));
 
         this->msTileLength = this->singleLoopCoreRowNum * FLOAT_NUM_OF_SINGEL_BLOCK;
-        pipe.InitBuffer(queueMax, 1, this->msTileLength * sizeof(float));
-        pipe.InitBuffer(queueSum, 1, this->msTileLength * sizeof(float));
+        pipe.InitBuffer(queueMax, 1, this->msTileLength * sizeof(T));
+        pipe.InitBuffer(queueSum, 1, this->msTileLength * sizeof(T));
 
         pipe.InitBuffer(sharedTmpBuffer, sharedTmpBufferSize); // 60K tmpbuffer
     }
@@ -96,36 +96,36 @@ public:
 private:
     __aicore__ inline void CopyIn(int32_t progress, uint32_t rowNum)
     {
-        AscendC::LocalTensor<float> xLocal = queueX.AllocTensor<float>();
+        AscendC::LocalTensor<T> xLocal = queueX.AllocTensor<T>();
         AscendC::DataCopy(xLocal, xGm[progress * this->tileLength], rowNum * this->columnLength);
         queueX.EnQue(xLocal);
     }
 
     __aicore__ inline void Compute(int32_t progressm, uint32_t rowNum)
     {
-        AscendC::LocalTensor<float> xLocal = queueX.DeQue<float>();
-        AscendC::LocalTensor<float> maxLocal = queueMax.AllocTensor<float>();
-        AscendC::LocalTensor<float> sumLocal = queueSum.AllocTensor<float>();
+        AscendC::LocalTensor<T> xLocal = queueX.DeQue<T>();
+        AscendC::LocalTensor<T> maxLocal = queueMax.AllocTensor<T>();
+        AscendC::LocalTensor<T> sumLocal = queueSum.AllocTensor<T>();
         AscendC::LocalTensor<uint8_t> tmpBuffer = sharedTmpBuffer.Get<uint8_t>();
 
         AscendC::SoftMaxShapeInfo srcShape = { rowNum, this->columnLength, rowNum, this->columnLength };
         if (rowNum % BASIC_BLOCK_ROW_FACTOR == 0 &&
             this->columnLength % BASIC_BLOCK_COLUMN_FACTOR == 0 &&
             this->columnLength < BASIC_BLOCK_MAX_COLUMN_LENGTH) {
-            AscendC::SoftMax<float, true, true>(xLocal, sumLocal, maxLocal, xLocal, tmpBuffer, softmaxTiling, srcShape);
+            AscendC::SoftMax<T, true, true>(xLocal, sumLocal, maxLocal, xLocal, tmpBuffer, softmaxTiling, srcShape);
         } else {
-            AscendC::SoftMax<float, true>(xLocal, sumLocal, maxLocal, xLocal, tmpBuffer, softmaxTiling, srcShape);
+            AscendC::SoftMax<T, true>(xLocal, sumLocal, maxLocal, xLocal, tmpBuffer, softmaxTiling, srcShape);
         }
-        queueX.EnQue<float>(xLocal);
-        queueMax.EnQue<float>(maxLocal);
-        queueSum.EnQue<float>(sumLocal);
+        queueX.EnQue<T>(xLocal);
+        queueMax.EnQue<T>(maxLocal);
+        queueSum.EnQue<T>(sumLocal);
     }
 
     __aicore__ inline void CopyOut(int32_t progress, uint32_t rowNum)
     {
-        AscendC::LocalTensor<float> zLocal = queueX.DeQue<float>();
-        AscendC::LocalTensor<float> maxLocal = queueMax.DeQue<float>();
-        AscendC::LocalTensor<float> sumLocal = queueSum.DeQue<float>();
+        AscendC::LocalTensor<T> zLocal = queueX.DeQue<T>();
+        AscendC::LocalTensor<T> maxLocal = queueMax.DeQue<T>();
+        AscendC::LocalTensor<T> sumLocal = queueSum.DeQue<T>();
 
         AscendC::DataCopy(zGm[progress * this->tileLength], zLocal, rowNum * this->columnLength);
         AscendC::DataCopy(maxGm[progress * this->msTileLength], maxLocal, rowNum * FLOAT_NUM_OF_SINGEL_BLOCK);
@@ -141,10 +141,10 @@ private:
     AscendC::TBuf<AscendC::TPosition::VECCALC> sharedTmpBuffer;
     AscendC::TQue<AscendC::TPosition::VECIN, BUFFER_NUM> queueX;
     AscendC::TQue<AscendC::TPosition::VECOUT, 1> queueMax, queueSum;
-    AscendC::GlobalTensor<float> xGm;
-    AscendC::GlobalTensor<float> maxGm;
-    AscendC::GlobalTensor<float> sumGm;
-    AscendC::GlobalTensor<float> zGm;
+    AscendC::GlobalTensor<T> xGm;
+    AscendC::GlobalTensor<T> maxGm;
+    AscendC::GlobalTensor<T> sumGm;
+    AscendC::GlobalTensor<T> zGm;
 
     uint32_t blockLength = 0;
     uint32_t usedBlockDim = 0;
@@ -175,7 +175,7 @@ extern "C" __global__ __aicore__ void softmax_custom(GM_ADDR x, GM_ADDR max, GM_
     }
     GET_TILING_DATA(tilingData, tiling);
     MyCustomKernel::VecTiling vecTiling = *reinterpret_cast<MyCustomKernel::VecTiling*>(&tilingData);
-    MyCustomKernel::KernelSoftmax op;
+    MyCustomKernel::KernelSoftmax<DTYPE_X> op;
     op.Init(x, max, sum, z, vecTiling);
     if (TILING_KEY_IS(1)) {
         op.Process();

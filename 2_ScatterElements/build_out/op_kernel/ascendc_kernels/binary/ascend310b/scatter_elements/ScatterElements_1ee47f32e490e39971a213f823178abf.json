@@ -1,0 +1,114 @@
+{
+ "binFileName": "ScatterElements_1ee47f32e490e39971a213f823178abf",
+ "binFileSuffix": ".o",
+ "blockDim": -1,
+ "coreType": "VectorCore",
+ "core_type": "AIV",
+ "kernelName": "ScatterElements_1ee47f32e490e39971a213f823178abf",
+ "magic": "RT_DEV_BINARY_MAGIC_ELF",
+ "memoryStamping": [],
+ "opParaSize": 192,
+ "parameters": [
+  null,
+  null,
+  null,
+  null,
+  null
+ ],
+ "sha256": "f5f25cfa4475a8ee4238c8648d4c001519ddb8e907f8bb1ce40840ed8edb1e1a",
+ "workspace": {
+  "num": 1,
+  "size": [
+   -1
+  ],
+  "type": [
+   0
+  ]
+ },
+ "kernelList": [
+  {
+   "kernelName": "ScatterElements_1ee47f32e490e39971a213f823178abf_0"
+  }
+ ],
+ "optionalInputMode": "gen_placeholder",
+ "optionalOutputMode": "gen_placeholder",
+ "supportSuperKernel": 1,
+ "compileInfo": {},
+ "supportInfo": {
+  "implMode": "high_performance",
+  "int64Mode": false,
+  "simplifiedKeyMode": 0,
+  "simplifiedKey": [
+   "ScatterElements/d=0,p=1/4,2/3,2/4,2/4,2",
+   "ScatterElements/d=0,p=0/4,2/3,2/4,2/4,2",
+   "ScatterElements/d=1,p=1/4,2/3,2/4,2/4,2",
+   "ScatterElements/d=1,p=0/4,2/3,2/4,2/4,2"
+  ],
+  "optionalInputMode": "gen_placeholder",
+  "optionalOutputMode": "gen_placeholder",
+  "staticKey": "2445b77c6d4befff46c7b205614b7ac32b120298eaee4a98046abce201808621,d7c2ee43895306cb1af95b4b547cb83bd56c3853a0ad45363cb07512ea8ba9fe",
+  "inputs": [
+   {
+    "name": "var",
+    "index": 0,
+    "dtype": "uint8",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   },
+   {
+    "name": "indices",
+    "index": 1,
+    "dtype": "int32",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   },
+   {
+    "name": "updates",
+    "index": 2,
+    "dtype": "uint8",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "var",
+    "index": 0,
+    "dtype": "uint8",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   }
+  ],
+  "attrs": [
+   {
+    "name": "axis",
+    "dtype": "int",
+    "value": 0
+   },
+   {
+    "name": "reduce",
+    "dtype": "str",
+    "value": ""
+   }
+  ],
+  "opMode": "dynamic",
+  "deterministic": "ignore"
+ },
+ "filePath": "ascend310b/scatter_elements/ScatterElements_1ee47f32e490e39971a213f823178abf.json"
+}

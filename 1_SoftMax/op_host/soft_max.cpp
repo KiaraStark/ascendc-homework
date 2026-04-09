@@ -24,7 +24,7 @@ static ge::graphStatus TilingFunc(gert::TilingContext* context)
 namespace ge {
 static ge::graphStatus InferShape(gert::InferShapeContext* context)
 {
-    const gert::Shape* x1_shape = context->GetInputShape(0);
+    const gert::Shape* x1_shape = context->GetInputShape(0);//0 号输入张量的形状信息
     gert::Shape* y_shape = context->GetOutputShape(0);
     *y_shape = *x1_shape;
     return GRAPH_SUCCESS;
@@ -61,8 +61,7 @@ public:
         this->SetInferShape(ge::InferShape);
 
         this->AICore().SetTiling(optiling::TilingFunc);
-        this->AICore().AddConfig("ascend910b");
-        this->AICore().AddConfig("ascend310p");
+        this->AICore().AddConfig("ascend310b");
     }
 };
 

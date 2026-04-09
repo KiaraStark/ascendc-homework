@@ -1,2 +1,0 @@
-/usr/bin/ar qc libsoftmax_kernel_lib.a CMakeFiles/softmax_kernel_lib.dir/softmax_kernel.cpp.o
-/usr/bin/ranlib libsoftmax_kernel_lib.a

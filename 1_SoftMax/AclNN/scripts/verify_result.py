@@ -24,7 +24,9 @@ def verify_result(real_path, golden_path, dtype):
     diff = np.abs(real_result - golden)
     deno = np.maximum(np.abs(real_result), np.abs(golden))
     result_atol = np.less_equal(diff, loss)
-    result_rtol = np.less_equal(diff / np.add(deno, MINIMUM), loss)
+    denominator = np.add(deno, MINIMUM)
+    relative = np.divide(diff, denominator, out=np.zeros_like(diff, dtype=np.float32), where=denominator > 0)
+    result_rtol = np.less_equal(relative, loss)
 
     if (not result_rtol.all()) and (not result_atol.all()):
         bad_rtol = np.sum(result_rtol == False)

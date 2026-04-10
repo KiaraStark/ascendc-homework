@@ -2,6 +2,7 @@
 * @file main.cpp
 */
 #include <cstdint>
+#include <string>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -13,12 +14,29 @@
 bool g_isDevice = false;
 int deviceId = 0;
 
-static OperatorDesc CreateOpDesc()
+static aclDataType ParseDataType(int argc, char **argv)
+{
+    for (int i = 1; i < argc; ++i) {
+        if (std::string(argv[i]) == "--dtype" && (i + 1) < argc) {
+            std::string dtype = argv[i + 1];
+            if (dtype == "fp16") {
+                return ACL_FLOAT16;
+            }
+            if (dtype == "fp32") {
+                return ACL_FLOAT;
+            }
+            ERROR_LOG("Unsupported dtype: %s", dtype.c_str());
+            return ACL_DT_UNDEFINED;
+        }
+    }
+    return ACL_FLOAT;
+}
+
+static OperatorDesc CreateOpDesc(aclDataType dataType)
 {
     // Match AclNN/scripts/gen_softmax_data.py defaults: shape=(64, 256).
     const std::vector<int64_t> shapeX {64, 256};
     const std::vector<int64_t> shapeMS {64, 8};
-    aclDataType dataType = ACL_FLOAT;
     aclFormat format = ACL_FORMAT_ND;
 
     OperatorDesc opDesc;
@@ -106,9 +124,9 @@ static bool InitResource()
     return true;
 }
 
-static bool RunOp()
+static bool RunOp(aclDataType dataType)
 {
-    OperatorDesc opDesc = CreateOpDesc();
+    OperatorDesc opDesc = CreateOpDesc(dataType);
     OpRunner runner(&opDesc);
 
     if (!runner.Init()) {
@@ -135,15 +153,17 @@ static bool RunOp()
 
 int main(int argc, char **argv)
 {
-    (void)argc;
-    (void)argv;
+    aclDataType dataType = ParseDataType(argc, argv);
+    if (dataType == ACL_DT_UNDEFINED) {
+        return FAILED;
+    }
 
     if (!InitResource()) {
         ERROR_LOG("Init resource failed");
         return FAILED;
     }
 
-    if (!RunOp()) {
+    if (!RunOp(dataType)) {
         DestroyResource();
         return FAILED;
     }

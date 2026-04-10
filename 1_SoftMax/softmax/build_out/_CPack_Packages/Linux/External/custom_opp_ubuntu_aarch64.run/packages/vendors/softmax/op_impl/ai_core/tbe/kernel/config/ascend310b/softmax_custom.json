@@ -1,0 +1,138 @@
+{
+  "binList": [
+    {
+      "implMode": "high_performance",
+      "int64Mode": false,
+      "simplifiedKeyMode": 0,
+      "simplifiedKey": [
+        "SoftmaxCustom/d=0,p=1/0,2/0,2/0,2/0,2",
+        "SoftmaxCustom/d=0,p=0/0,2/0,2/0,2/0,2",
+        "SoftmaxCustom/d=1,p=1/0,2/0,2/0,2/0,2",
+        "SoftmaxCustom/d=1,p=0/0,2/0,2/0,2/0,2"
+      ],
+      "staticKey": "2b68d29f5d3f7a33c59da70b2ed3f7d4f00053d8d2fabd8a5999e4cd71599c06,827c4097d281b20bae685cd5160ba7926f114d5f796620c7b22694a70d7efa7a",
+      "inputs": [
+        {
+          "name": "x",
+          "index": 0,
+          "dtype": "float32",
+          "format": "ND",
+          "paramType": "required",
+          "shape": [
+            -2
+          ],
+          "format_match_mode": "FormatAgnostic"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "max",
+          "index": 0,
+          "dtype": "float32",
+          "format": "ND",
+          "paramType": "required",
+          "shape": [
+            -2
+          ],
+          "format_match_mode": "FormatAgnostic"
+        },
+        {
+          "name": "sum",
+          "index": 1,
+          "dtype": "float32",
+          "format": "ND",
+          "paramType": "required",
+          "shape": [
+            -2
+          ],
+          "format_match_mode": "FormatAgnostic"
+        },
+        {
+          "name": "z",
+          "index": 2,
+          "dtype": "float32",
+          "format": "ND",
+          "paramType": "required",
+          "shape": [
+            -2
+          ],
+          "format_match_mode": "FormatAgnostic"
+        }
+      ],
+      "opMode": "dynamic",
+      "optionalInputMode": "gen_placeholder",
+      "deterministic": "ignore",
+      "optionalOutputMode": "gen_placeholder",
+      "binInfo": {
+        "jsonFilePath": "ascend310b/softmax_custom/SoftmaxCustom_8b37acb6bcc36e0a8b8f5f1a6b896d3d.json"
+      }
+    },
+    {
+      "implMode": "high_performance",
+      "int64Mode": false,
+      "simplifiedKeyMode": 0,
+      "simplifiedKey": [
+        "SoftmaxCustom/d=0,p=1/1,2/1,2/1,2/1,2",
+        "SoftmaxCustom/d=0,p=0/1,2/1,2/1,2/1,2",
+        "SoftmaxCustom/d=1,p=1/1,2/1,2/1,2/1,2",
+        "SoftmaxCustom/d=1,p=0/1,2/1,2/1,2/1,2"
+      ],
+      "staticKey": "14e1c31e9ae836ffedcc9f08eb3b3931064b639a0540d81d8aec2f977fd0660c,16925e4a089826b06d7bbc8f7bcb5cf132eead95871d28aa1c7b4cb94455b610",
+      "inputs": [
+        {
+          "name": "x",
+          "index": 0,
+          "dtype": "float16",
+          "format": "ND",
+          "paramType": "required",
+          "shape": [
+            -2
+          ],
+          "format_match_mode": "FormatAgnostic"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "max",
+          "index": 0,
+          "dtype": "float16",
+          "format": "ND",
+          "paramType": "required",
+          "shape": [
+            -2
+          ],
+          "format_match_mode": "FormatAgnostic"
+        },
+        {
+          "name": "sum",
+          "index": 1,
+          "dtype": "float16",
+          "format": "ND",
+          "paramType": "required",
+          "shape": [
+            -2
+          ],
+          "format_match_mode": "FormatAgnostic"
+        },
+        {
+          "name": "z",
+          "index": 2,
+          "dtype": "float16",
+          "format": "ND",
+          "paramType": "required",
+          "shape": [
+            -2
+          ],
+          "format_match_mode": "FormatAgnostic"
+        }
+      ],
+      "opMode": "dynamic",
+      "optionalInputMode": "gen_placeholder",
+      "deterministic": "ignore",
+      "optionalOutputMode": "gen_placeholder",
+      "binInfo": {
+        "jsonFilePath": "ascend310b/softmax_custom/SoftmaxCustom_e6e5318afd07ee724ca6a2aa423bb9f2.json"
+      }
+    }
+  ]
+}

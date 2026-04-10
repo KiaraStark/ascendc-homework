@@ -1,0 +1,102 @@
+{
+ "binFileName": "SoftmaxCustom_8b37acb6bcc36e0a8b8f5f1a6b896d3d",
+ "binFileSuffix": ".o",
+ "blockDim": -1,
+ "coreType": "VectorCore",
+ "core_type": "AIV",
+ "kernelName": "SoftmaxCustom_8b37acb6bcc36e0a8b8f5f1a6b896d3d",
+ "magic": "RT_DEV_BINARY_MAGIC_ELF",
+ "memoryStamping": [],
+ "opParaSize": 120,
+ "parameters": [
+  null,
+  null,
+  null,
+  null,
+  null
+ ],
+ "sha256": "611e6de789d2d4a337c5cb3714a4c6fac4a08f966337ec63a3a254fd58b14e24",
+ "workspace": {
+  "num": 1,
+  "size": [
+   -1
+  ],
+  "type": [
+   0
+  ]
+ },
+ "kernelList": [
+  {
+   "kernelName": "SoftmaxCustom_8b37acb6bcc36e0a8b8f5f1a6b896d3d_1"
+  }
+ ],
+ "optionalInputMode": "gen_placeholder",
+ "optionalOutputMode": "gen_placeholder",
+ "supportSuperKernel": 1,
+ "compileInfo": {},
+ "supportInfo": {
+  "implMode": "high_performance",
+  "int64Mode": false,
+  "simplifiedKeyMode": 0,
+  "simplifiedKey": [
+   "SoftmaxCustom/d=0,p=1/0,2/0,2/0,2/0,2",
+   "SoftmaxCustom/d=0,p=0/0,2/0,2/0,2/0,2",
+   "SoftmaxCustom/d=1,p=1/0,2/0,2/0,2/0,2",
+   "SoftmaxCustom/d=1,p=0/0,2/0,2/0,2/0,2"
+  ],
+  "optionalInputMode": "gen_placeholder",
+  "optionalOutputMode": "gen_placeholder",
+  "staticKey": "2b68d29f5d3f7a33c59da70b2ed3f7d4f00053d8d2fabd8a5999e4cd71599c06,827c4097d281b20bae685cd5160ba7926f114d5f796620c7b22694a70d7efa7a",
+  "inputs": [
+   {
+    "name": "x",
+    "index": 0,
+    "dtype": "float32",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "max",
+    "index": 0,
+    "dtype": "float32",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   },
+   {
+    "name": "sum",
+    "index": 1,
+    "dtype": "float32",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   },
+   {
+    "name": "z",
+    "index": 2,
+    "dtype": "float32",
+    "format": "ND",
+    "paramType": "required",
+    "shape": [
+     -2
+    ],
+    "format_match_mode": "FormatAgnostic"
+   }
+  ],
+  "opMode": "dynamic",
+  "deterministic": "ignore"
+ },
+ "filePath": "ascend310b/softmax_custom/SoftmaxCustom_8b37acb6bcc36e0a8b8f5f1a6b896d3d.json"
+}

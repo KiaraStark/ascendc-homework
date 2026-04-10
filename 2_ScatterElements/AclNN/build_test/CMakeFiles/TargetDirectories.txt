@@ -1,0 +1,7 @@
+/home/HwHiAiUser/homework/2_ScatterElements/AclNN/build_test/CMakeFiles/execute_scatter_elements_acl.dir
+/home/HwHiAiUser/homework/2_ScatterElements/AclNN/build_test/CMakeFiles/edit_cache.dir
+/home/HwHiAiUser/homework/2_ScatterElements/AclNN/build_test/CMakeFiles/rebuild_cache.dir
+/home/HwHiAiUser/homework/2_ScatterElements/AclNN/build_test/CMakeFiles/list_install_components.dir
+/home/HwHiAiUser/homework/2_ScatterElements/AclNN/build_test/CMakeFiles/install.dir
+/home/HwHiAiUser/homework/2_ScatterElements/AclNN/build_test/CMakeFiles/install/local.dir
+/home/HwHiAiUser/homework/2_ScatterElements/AclNN/build_test/CMakeFiles/install/strip.dir
